@@ -1,0 +1,58 @@
+<v-container class="my-5">
+    <v-layout row wrap mt-3>
+        <!-- Sign up -->
+        <v-flex sm12 md6>
+            <h5>Sign Up</h5>
+            <v-form @submit.prevent="makeNewUser">
+                <v-container>
+                    <v-flex>
+                        <v-text-field v-model.trim='newUser.userName' :counter="20" label="userName" required>
+                        </v-text-field>
+                    </v-flex>
+                    <v-flex>
+                        <v-text-field append-icon="person" v-model.trim='userAuth.email' :counter="50" label="Email"
+                            required>
+                        </v-text-field>
+                    </v-flex>
+
+                    <v-text-field v-model="userAuth.password"
+                        :append-icon="showPassword ? 'visibility_off' : 'visibility'"
+                        :type="showPassword ? 'text' : 'userAuth.password'" name="input-10-1" label="Password"
+                        hint="At least 6 characters" counter @click:append="showPassword = !showPassword">
+                    </v-text-field>
+                </v-container>
+
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="blue darken-1" flat type='submit'>Make Account</v-btn>
+                </v-card-actions>
+            </v-form>
+        </v-flex>
+        <!-- Sign In -->
+        <v-flex sm12 md6>
+            <h5>Sign In</h5>
+            <v-form @submit.prevent="signIn">
+                <v-container>
+                    <v-flex>
+                        <v-text-field append-icon="person" v-model.trim='userAuth.email' :counter="50" label="Email"
+                            required>
+                        </v-text-field>
+                    </v-flex>
+
+                    <v-text-field v-model="userAuth.password"
+                        :append-icon="showPassword ? 'visibility_off' : 'visibility'"
+                        :type="showPassword ? 'text' : 'userAuth.password'" name="input-10-1" label="Password"
+                        hint="At least 6 characters" counter @click:append="showPassword = !showPassword">
+                    </v-text-field>
+
+
+                </v-container>
+
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="blue darken-1" flat type='submit'>Log In</v-btn>
+                </v-card-actions>
+            </v-form>
+        </v-flex>
+    </v-layout>
+</v-container>

@@ -20,9 +20,8 @@ export const actions: ActionTree<userState, any> = {
     },
     async createUserInDB({ }, payload: userData) {
         if (auth.currentUser === null || auth.currentUser === undefined) return Promise.reject('Could not make user in DB. User not authenticated')
-        const userUID = auth.currentUser.uid;
         console.log('Creating User in DB...');
-        return await db.collection('Users').doc(userUID).set(payload);
+        return await db.collection('Users').doc(auth.currentUser.uid).set(payload);
         // Todo: configure rules in firebase so only the user with his UID can change his data
     },
     async makeNewUser({ dispatch, commit }, payload: newUser) {

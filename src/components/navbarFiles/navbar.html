@@ -2,20 +2,21 @@
     <v-toolbar app dark color="primary">
         <v-toolbar-side-icon @click.stop="drawer = !drawer" v-if='$store.getters.isUserSignedIn'></v-toolbar-side-icon>
         <v-toolbar-title class="white--text" flat @click='$router.push("/")' style="cursor: pointer;">
-            Chat-App
+            What Next
         </v-toolbar-title>
         <v-spacer></v-spacer>
     </v-toolbar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary v-if='$store.getters.isUserSignedIn'>
         <v-list class="pa-1">
-            <v-list-tile avatar @click='$router.push({ name: "user", params: { userName: getUserName }})'>
-                <v-list-tile-avatar>
+            <!--  @click='$router.push({ name: "user", params: { userName: getUserName }})' -->
+            <v-list-tile avatar>
+                <!-- <v-list-tile-avatar>
                     <img :src="$store.getters.getProfileImageLink">
-                </v-list-tile-avatar>
+                </v-list-tile-avatar> -->
 
                 <v-list-tile-content>
-                    <v-list-tile-title>{{getUserName}}</v-list-tile-title>
+                    <v-list-tile-title>{{getUsername}}</v-list-tile-title>
                 </v-list-tile-content>
             </v-list-tile>
         </v-list>
@@ -35,32 +36,8 @@
                     </v-list-tile-title>
                 </v-list-tile-content>
             </v-list-tile>
-            <!-- Browse -->
-            <v-list-tile @click='$router.push("/browse")'>
-                <v-list-tile-action>
-                    <v-icon>dashboard</v-icon>
-                </v-list-tile-action>
-
-                <v-list-tile-content>
-                    <v-list-tile-title>
-                        Browse
-                    </v-list-tile-title>
-                </v-list-tile-content>
-            </v-list-tile>
-            <!-- Browse -->
-            <v-list-tile @click='$router.push("/hiddenRooms")'>
-                <v-list-tile-action>
-                    <v-icon>block</v-icon>
-                </v-list-tile-action>
-
-                <v-list-tile-content>
-                    <v-list-tile-title>
-                        Hidden Rooms
-                    </v-list-tile-title>
-                </v-list-tile-content>
-            </v-list-tile>
             <!-- Sign Out -->
-            <v-list-tile @click='signOutUser'>
+            <!-- <v-list-tile @click='signOutUser'>
                 <v-list-tile-action>
                     <v-icon>account_box</v-icon>
                 </v-list-tile-action>
@@ -70,7 +47,7 @@
                         Sign Out
                     </v-list-tile-title>
                 </v-list-tile-content>
-            </v-list-tile>
+            </v-list-tile> -->
         </v-list>
 
     </v-navigation-drawer>

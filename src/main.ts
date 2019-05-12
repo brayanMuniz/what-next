@@ -3,9 +3,10 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import Vuetify from 'vuetify';
-
-Vue.use(Vuetify);
-
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+Vue.use(Vuetify, {
+  iconfont: 'md'
+})
 Vue.config.productionTip = true;
 
 
