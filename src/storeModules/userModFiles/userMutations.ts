@@ -6,4 +6,5 @@ export const mutations: MutationTree<userState> = {
         state.error = false
         state.userData = payload;
     },
+
 };

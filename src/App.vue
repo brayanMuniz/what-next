@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link>|
-    </div>
     <router-view/>
   </div>
 </template>
@@ -24,6 +21,9 @@ export default Vue.extend({
     };
     this.$store.commit("userDataLoaded", testData);
     console.log(this.$store.state);
+    // Todo: Configure vuetify and have basic sign up and sign in template
+    // Todo: Be able to make a new user
+    // Todo: configure automotic datagrabing for userData
   }
 });
 </script>
