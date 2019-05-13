@@ -9,7 +9,6 @@ export const state: userState = {
     error: false
 };
 
-
 export const userModule: Module<userState, RootState> = {
     state, getters, mutations, actions
 }

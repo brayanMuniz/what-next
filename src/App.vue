@@ -24,7 +24,7 @@ export default Vue.extend({
     // Todo: configure automotic datagrabing for userData
     auth.onAuthStateChanged(async user => {
       if (user) {
-        this.$store.dispatch("getAndSetUserData");
+        await this.$store.dispatch("getAndSetUserData");
       } else {
         this.$router.push("/");
       }

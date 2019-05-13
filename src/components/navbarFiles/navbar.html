@@ -4,17 +4,17 @@
         <v-toolbar-title class="white--text" flat @click='$router.push("/")' style="cursor: pointer;">
             What Next
         </v-toolbar-title>
+        <!-- Todo: Make this a computed property -->
+
         <v-spacer></v-spacer>
+        <!-- <v-toolbar-items class="mr-0">
+            <v-btn @click='signInDialog = !signInDialog'>Sign In</v-btn>
+        </v-toolbar-items> -->
     </v-toolbar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary v-if='$store.getters.isUserSignedIn'>
         <v-list class="pa-1">
-            <!--  @click='$router.push({ name: "user", params: { userName: getUserName }})' -->
             <v-list-tile avatar>
-                <!-- <v-list-tile-avatar>
-                    <img :src="$store.getters.getProfileImageLink">
-                </v-list-tile-avatar> -->
-
                 <v-list-tile-content>
                     <v-list-tile-title>{{getUsername}}</v-list-tile-title>
                 </v-list-tile-content>
@@ -37,7 +37,7 @@
                 </v-list-tile-content>
             </v-list-tile>
             <!-- Sign Out -->
-            <!-- <v-list-tile @click='signOutUser'>
+            <v-list-tile @click='signOutUser'>
                 <v-list-tile-action>
                     <v-icon>account_box</v-icon>
                 </v-list-tile-action>
@@ -47,8 +47,10 @@
                         Sign Out
                     </v-list-tile-title>
                 </v-list-tile-content>
-            </v-list-tile> -->
+            </v-list-tile>
         </v-list>
 
     </v-navigation-drawer>
+
+    <!-- <sign-in :openSignIn='signInDialog'></sign-in> -->
 </nav>

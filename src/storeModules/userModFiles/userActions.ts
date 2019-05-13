@@ -47,12 +47,9 @@ export const actions: ActionTree<userState, any> = {
         await auth.signInWithEmailAndPassword(payload.email, payload.password);
     },
     // **** Sign Out User
-    async signOutUserAuth({ }) {
+    async signOutUserAuth({ commit }) {
         console.log('Sign Out User From userModule..');
+        commit('clearUserData')
         return await auth.signOut();
-    },
-    // **** This method is here for additional things that needs to be updated in the database
-    async signOutUserTotal({ dispatch }) {
-        return await dispatch('signOutUserAuth');
-    },
+    }
 };
