@@ -1,5 +1,6 @@
 import Vue from "vue";
-import { newUser, userAuthentication } from '@/storeModules/types';
+import { newUser, userAuthentication, simpleUserData } from '@/storeModules/types';
+import { Project } from '@/storeModules/projectMoFiles/projectTypes';
 export default Vue.extend({
     name: "home",
     data() {
@@ -16,8 +17,7 @@ export default Vue.extend({
         }
     },
     created() {
-        console.log(this.$store.getters.isUserSignedIn)
-        if (this.$store.getters.isUserSignedIn) this.$router.push('/browse')
+        // if (this.$store.getters.isUserSignedIn) this.$router.push('/browse')
     },
     methods: {
         async makeNewUser() {
@@ -48,5 +48,25 @@ export default Vue.extend({
                     console.log('​signIn -> err', err);
                 });
         },
+        async makeNewProject() {
+            // Todo: in FB funtions if the project has no filters skip the function call
+            if (this.$store.getters.isUserSignedIn === false) return 'User Is not Authenticated'
+            let mySimpleUserData: simpleUserData = this.$store.getters.getSimpleUserData
+            let testProject: Project = {
+                projectName: 'testProject',
+                dateCreated: new Date(),
+                users: [mySimpleUserData],
+                filters: {
+                    categories: ['testing'],
+                    languages: ['typescript'],
+                    tags: ['hopeThisWorks'],
+                }
+            }
+            this.$store.dispatch('makeNewProject', testProject).then(res => {
+                console.log(res)
+            }).catch(err => {
+                console.error(err)
+            })
+        }
     }
 });

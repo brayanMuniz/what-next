@@ -3,12 +3,11 @@ import { userState, userAuthentication, userData, newUser } from '../types';
 import firebase from '@/firebaseConfig'
 let auth = firebase.auth;
 let db = firebase.database
-// Because of typescript dont need to add any extra security
 export const actions: ActionTree<userState, any> = {
     // **** Making the user
     async createUserWithEmail({ }, payload: userAuthentication) {
         console.log('Creating User With email module...');
-        return auth.createUserWithEmailAndPassword(payload.email, payload.password);
+        return await auth.createUserWithEmailAndPassword(payload.email, payload.password);
     },
     async lookForuserName({ }, userName: string) {
         if (userName === undefined || userName === null) return Promise.reject('userName is not defined')

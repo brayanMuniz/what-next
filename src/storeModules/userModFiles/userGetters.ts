@@ -1,5 +1,5 @@
 import { GetterTree } from 'vuex';
-import { userState } from '../types';
+import { userState, simpleUserData } from '../types';
 import firebase from '@/firebaseConfig'
 let auth = firebase.auth
 export const getters: GetterTree<userState, any> = {
@@ -10,6 +10,15 @@ export const getters: GetterTree<userState, any> = {
     getUserData(state): object {
         if (state.userData == undefined) return {}
         return state.userData
+    },
+    getSimpleUserData(state, getters): object {
+        if (state.userData === undefined || auth.currentUser === null) return {}
+        let mySimpleUserData: simpleUserData = {
+            userName: state.userData.userName,
+            dateCreated: state.userData.dateCreated,
+            userUID: auth.currentUser.uid
+        }
+        return mySimpleUserData
     },
     isUserSignedIn: (state): boolean => {
         if (state.userData === undefined || auth === undefined || auth === null) return false
