@@ -1,10 +1,10 @@
 import Vue from "vue";
-import signInComponent from '../signInFiles/signIn.vue'
+import signInComponent from '../loginFiles/login'
 export default Vue.extend({
     name: 'navbar',
     data() {
         return {
-            drawer: false,
+            sideNavDrawer: null,
             signInDialog: false
         };
     },
