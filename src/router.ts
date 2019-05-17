@@ -4,6 +4,7 @@ import Home from './views/homeFiles/Home.vue';
 
 Vue.use(Router);
 
+// Todo: make a router for the user
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
@@ -14,6 +15,16 @@ export default new Router({
       component: Home,
     },
     {
+      path: '/login',
+      name: 'login',
+      component: Home
+    },
+    {
+      path: '/join',
+      name: 'join',
+      component: Home
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
@@ -21,5 +32,6 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
     },
+
   ],
 });

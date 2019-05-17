@@ -13,7 +13,9 @@ export default Vue.extend({
                 email: '',
                 password: ''
             },
-            showPassword: false
+            showPassword: false,
+            umaruChanLink: 'https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Forig03.deviantart.net%2F5f13%2Ff%2F2015%2F257%2F1%2F0%2F_true__umaru__himouto__umaru_chan__by_klikster-d99l0ye.png&f=1',
+            vueLogo: 'https://dwglogo.com/wp-content/uploads/2017/09/Vue_js_logo.png'
         }
     },
     created() {

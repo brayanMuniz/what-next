@@ -1,7 +1,8 @@
 <nav>
     <v-toolbar app dark color="primary">
-        <v-toolbar-title class="white--text" flat to='/' style="cursor: pointer;">
-            What Next
+        <!-- Todo: Try to keep it all capital -->
+        <v-toolbar-title class="white--text">
+            <v-btn to='/' flat>What-Next</v-btn>
         </v-toolbar-title>
         <!-- Todo: Make this a computed property -->
 
@@ -11,47 +12,9 @@
             <v-btn to='/join' flat>Sign Up</v-btn>
             <v-btn to='/login' flat>Sign In</v-btn>
         </v-toolbar-items>
+
         <v-toolbar-items class="mr-0" v-else>
             <v-btn to='/user/' flat>{{getUsername}}</v-btn>
         </v-toolbar-items>
     </v-toolbar>
-    <!-- Side navigation drawer -->
-    <!-- <v-navigation-drawer v-model="sideNavDrawer" absolute temporary v-if='$store.getters.isUserSignedIn'>
-        <v-list class="pa-1">
-            <v-list-tile avatar>
-                <v-list-tile-content>
-                    <v-list-tile-title>{{getUsername}}</v-list-tile-title>
-                </v-list-tile-content>
-            </v-list-tile>
-        </v-list>
-
-        <v-list class="pt-0" dense>
-            <v-divider></v-divider>
-            <v-list-tile @click='$router.push("/")'>
-                <v-list-tile-action>
-                    <v-icon>home</v-icon>
-                </v-list-tile-action>
-
-                <v-list-tile-content>
-                    <v-list-tile-title>
-                        Home
-                    </v-list-tile-title>
-                </v-list-tile-content>
-            </v-list-tile>
-            <v-list-tile @click='signOutUser'>
-                <v-list-tile-action>
-                    <v-icon>account_box</v-icon>
-                </v-list-tile-action>
-
-                <v-list-tile-content>
-                    <v-list-tile-title>
-                        Sign Out
-                    </v-list-tile-title>
-                </v-list-tile-content>
-            </v-list-tile>
-        </v-list>
-
-    </v-navigation-drawer> -->
-
-    <!-- <sign-in :openSignIn='signInDialog'></sign-in> -->
 </nav>
