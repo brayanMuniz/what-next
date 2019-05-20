@@ -40,7 +40,6 @@ export const actions: ActionTree<userState, any> = {
         let userData = await db.collection('Users').doc(auth.currentUser.uid).get()
         // Todo: if user Data is undefined return null or something 
         commit('userDataLoaded', userData.data());
-        console.log("Get And Set Called")
         return userData.data();
     },
     async logInUserAuth({ }, payload: userAuthentication) {

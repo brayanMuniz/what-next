@@ -2,6 +2,7 @@ import Vue from "vue";
 import userData from '@/components/userDataFiles/userData.vue'
 import { newUser, userAuthentication, simpleUserData } from '@/storeModules/types';
 import { Project } from '@/storeModules/projectMoFiles/projectTypes';
+// ? All user Authenticated routes do not have a /:userName, but the ones to view user profile do ? 
 export default Vue.extend({
     name: "home",
     data() {
@@ -19,7 +20,6 @@ export default Vue.extend({
             vueLogo: 'https://dwglogo.com/wp-content/uploads/2017/09/Vue_js_logo.png'
         }
     },
-    created() { },
     methods: {
         async makeNewUser() {
             // IF you use async and await some of the problems might go away

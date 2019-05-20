@@ -11,13 +11,13 @@
             <v-parallax :src="umaruChanLink" height="400">
                 <v-layout column align-center justify-center class="white--text">
                     <img :src="vueLogo" alt="Vuetify.js" height="200">
-                    <h1 class="black--text mb-2 display-1 text-xs-center dark">What-Next</h1>
-                    <div class="subheading mb-2 display-2 text-xs-center black--text">
+                    <h1 class="black--text mb-1 display-1 text-xs-center dark">What-Next</h1>
+                    <div class="subheading mb-1 display-2 text-xs-center black--text">
                         Look for the projects others people made
                         or post your own so new programmers can be inspired to make more projects.
                     </div>
                     <!-- Todo: Router link to signUp and signIn or import the component like github -->
-                    <v-btn class="blue lighten-2 mt-3" dark large>
+                    <v-btn class="blue lighten-2 mt-1" dark large>
                         Get Started
                     </v-btn>
 
@@ -103,7 +103,7 @@
         <!-- Contact -->
         <section>
             <v-container grid-list-xl>
-                <v-layout row wrap justify-center class="my-5">
+                <v-layout row wrap justify-center class="my-3">
                     <v-flex xs12 sm4>
                         <v-card class="elevation-0 transparent">
                             <v-card-title primary-title class="layout justify-center">
@@ -160,7 +160,7 @@
 
         <!-- Todo: Make footer component and import -->
     </v-content>
-
+    <!-- Todo: make a loading screen -->
     <user-data v-else></user-data>
 
     <v-layout row wrap mt-3>

@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from './views/homeFiles/Home.vue';
 import userSettings from './views/userSettingsFiles/userSettings.vue'
 import store from './store';
+import login from './views/loginFiles/login.vue'
 import firebase from "@/firebaseConfig";
 let auth = firebase.auth;
 Vue.use(Router);
@@ -17,21 +18,27 @@ export default new Router({
       name: 'home',
       component: Home,
       beforeEnter: async (to, from, next) => {
-        await auth.onAuthStateChanged(async user => {
-          if (user) {
-            await store.dispatch("getAndSetUserData");
+        if (store.getters.userHasData === false && auth.currentUser !== null) {
+          console.log('Getting user data from router.ts')
+          await store.dispatch('getAndSetUserData').then(res => {
             next()
-          } else {
-            console.log('Remove user Data? becuase user not signed in')
-            next()
-          }
-        });
+          })
+        } else {
+          next()
+        }
       }
     },
     {
+      // Todo: have a beforeEnter and quick out the user if they are signed in
       path: '/login',
       name: 'login',
-      component: Home
+      component: login,
+      beforeEnter: async (to, from, next) => {
+        if (store.getters.isUserSignedIn) {
+          next('/')
+        }
+        next()
+      }
     },
     {
       path: '/join',
@@ -39,7 +46,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/:userName/userSettings',
+      path: '/settings',
       name: 'userSettings',
       component: userSettings
     },
@@ -51,6 +58,5 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
     },
-
   ],
 });

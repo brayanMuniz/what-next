@@ -21,9 +21,6 @@ export default Vue.extend({
         toUserData(): Object {
             return {
                 name: 'userSettings',
-                params: {
-                    userName: this.$store.getters.getUserData.userName
-                }
             }
         }
     },
