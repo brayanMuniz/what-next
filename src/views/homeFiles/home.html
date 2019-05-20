@@ -159,11 +159,7 @@
         <!-- Todo: Make footer component and import -->
     </v-content>
 
-    <!-- Todo: Make somehting similar to github landing page divided into 3 section
-        left side: All your projects in a list:
-        middle: how your projects are doing:
-        right side: Projects that are similar to yours
-    -->
+    <user-data v-else></user-data>
 
     <v-layout row wrap mt-3>
         <!-- Sign up -->
@@ -221,16 +217,5 @@
             </v-form>
         </v-flex>
     </v-layout>
-    <!-- <v-layout row wrap mt-3>
-        <v-flex sm12 md6></v-flex>
-        <v-flex sm12 md6>
-            <v-form @submit.prevent="makeNewProject">
 
-                <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="orange darken-1" flat type='submit'>Test New Project</v-btn>
-                </v-card-actions>
-            </v-form>
-        </v-flex>
-    </v-layout> -->
 </v-container>

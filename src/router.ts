@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/homeFiles/Home.vue';
-
+import userSettings from './views/userSettingsFiles/userSettings.vue'
 Vue.use(Router);
 
 // Todo: make a router for the user
@@ -23,6 +23,11 @@ export default new Router({
       path: '/join',
       name: 'join',
       component: Home
+    },
+    {
+      path: '/:userName/userSettings',
+      name: 'userSettings',
+      component: userSettings
     },
     {
       path: '/about',

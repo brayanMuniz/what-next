@@ -17,6 +17,14 @@ export default Vue.extend({
         getUsername(): String {
             if (this.$store.getters.isUserSignedIn) return this.$store.getters.getUserData.userName
             return ''
+        },
+        toUserData(): Object {
+            return {
+                name: 'userSettings',
+                params: {
+                    userName: this.$store.getters.getUserData.userName
+                }
+            }
         }
     },
     components: {

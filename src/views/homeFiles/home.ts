@@ -1,4 +1,5 @@
 import Vue from "vue";
+import userData from '@/components/userDataFiles/userData.vue'
 import { newUser, userAuthentication, simpleUserData } from '@/storeModules/types';
 import { Project } from '@/storeModules/projectMoFiles/projectTypes';
 export default Vue.extend({
@@ -70,5 +71,8 @@ export default Vue.extend({
                 console.error(err)
             })
         }
+    },
+    components: {
+        'user-data': userData
     }
 });

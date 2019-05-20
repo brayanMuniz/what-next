@@ -1,8 +1,8 @@
 <nav>
     <v-toolbar app dark color="primary">
-        <!-- Todo: Try to keep it all capital -->
-        <v-toolbar-title class="white--text">
-            <v-btn to='/' flat>What-Next</v-btn>
+        <!-- Todo: @click push to home route -->
+        <v-toolbar-title to='/'>
+            What-Next
         </v-toolbar-title>
         <!-- Todo: Make this a computed property -->
 
@@ -14,7 +14,8 @@
         </v-toolbar-items>
 
         <v-toolbar-items class="mr-0" v-else>
-            <v-btn to='/user/' flat>{{getUsername}}</v-btn>
+            <!-- Todo: make this into a computed  -->
+            <v-btn :to='toUserData' flat>{{getUsername}}</v-btn>
         </v-toolbar-items>
     </v-toolbar>
 </nav>
