@@ -4,6 +4,7 @@ import Home from './views/homeFiles/Home.vue';
 import userSettings from './views/userSettingsFiles/userSettings.vue'
 import store from './store';
 import login from './views/loginFiles/login.vue'
+import newProject from './views/newProject/newProject.vue'
 import firebase from "@/firebaseConfig";
 let auth = firebase.auth;
 Vue.use(Router);
@@ -51,12 +52,9 @@ export default new Router({
       component: userSettings
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
-    },
+      path: '/newProject',
+      name: 'newProject',
+      component: newProject
+    }
   ],
 });

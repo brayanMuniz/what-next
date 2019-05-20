@@ -48,26 +48,6 @@ export default Vue.extend({
                 .catch((err) => {
                     console.log('​signIn -> err', err);
                 });
-        },
-        async makeNewProject() {
-            // Todo: in FB funtions if the project has no filters skip the function call
-            if (this.$store.getters.isUserSignedIn === false) return 'User Is not Authenticated'
-            let mySimpleUserData: simpleUserData = this.$store.getters.getSimpleUserData
-            let testProject: Project = {
-                projectName: 'testProject',
-                dateCreated: new Date(),
-                users: [mySimpleUserData],
-                filters: {
-                    categories: ['testing'],
-                    languages: ['typescript'],
-                    tags: ['hopeThisWorks'],
-                }
-            }
-            this.$store.dispatch('makeNewProject', testProject).then(res => {
-                console.log(res)
-            }).catch(err => {
-                console.error(err)
-            })
         }
     },
     components: {

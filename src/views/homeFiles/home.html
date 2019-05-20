@@ -8,19 +8,44 @@
 
         <!-- Intro -->
         <section>
-            <v-parallax :src="umaruChanLink" height="400">
-                <v-layout column align-center justify-center class="white--text">
-                    <img :src="vueLogo" alt="Vuetify.js" height="200">
-                    <h1 class="black--text mb-1 display-1 text-xs-center dark">What-Next</h1>
-                    <div class="subheading mb-1 display-2 text-xs-center black--text">
-                        Look for the projects others people made
-                        or post your own so new programmers can be inspired to make more projects.
-                    </div>
-                    <!-- Todo: Router link to signUp and signIn or import the component like github -->
-                    <v-btn class="blue lighten-2 mt-1" dark large>
-                        Get Started
-                    </v-btn>
+            <v-parallax :src="umaruChanLink" height="500">
+                <v-layout row align-center justify-center class="white--text">
+                    <v-flex sm7>
+                        <!-- Todo: Have the image logo in the center -->
+                        <img :src="vueLogo" alt="Vuetify.js" height="200">
+                        <h1 class="black--text mb-1 display-1 text-xs-center dark">What-Next</h1>
+                        <div class="subheading mb-1 display-2 text-xs-center black--text">
+                            Look for the projects others people made
+                            or post your own so new programmers can be inspired to make more projects.
+                        </div>
+                    </v-flex>
 
+                    <v-flex sm5>
+                        <h5>Sign In</h5>
+                        <v-form @submit.prevent="signIn">
+                            <v-container>
+                                <v-flex>
+                                    <v-text-field name="Email" append-icon="person" v-model.trim='userAuth.email'
+                                        :counter="50" label="Email" required>
+                                    </v-text-field>
+                                </v-flex>
+
+                                <v-text-field v-model="userAuth.password"
+                                    :append-icon="showPassword ? 'visibility_off' : 'visibility'"
+                                    :type="showPassword ? 'text' : 'userAuth.password'" name="input-10-1"
+                                    label="Password" hint="At least 6 characters" counter
+                                    @click:append="showPassword = !showPassword">
+                                </v-text-field>
+
+
+                            </v-container>
+
+                            <v-card-actions>
+                                <v-spacer></v-spacer>
+                                <v-btn color="blue darken-1" dark flat type='submit'>Log In</v-btn>
+                            </v-card-actions>
+                        </v-form>
+                    </v-flex>
                 </v-layout>
             </v-parallax>
         </section>
@@ -162,62 +187,4 @@
     </v-content>
     <!-- Todo: make a loading screen -->
     <user-data v-else></user-data>
-
-    <v-layout row wrap mt-3>
-        <!-- Sign up -->
-        <v-flex sm12 md6>
-            <h5>Sign Up</h5>
-            <v-form @submit.prevent="makeNewUser">
-                <v-container>
-                    <v-flex>
-                        <v-text-field v-model.trim='newUser.userName' :counter="20" label="userName" required>
-                        </v-text-field>
-                    </v-flex>
-                    <v-flex>
-                        <v-text-field append-icon="person" v-model.trim='userAuth.email' :counter="50" label="Email"
-                            required>
-                        </v-text-field>
-                    </v-flex>
-
-                    <v-text-field v-model="userAuth.password"
-                        :append-icon="showPassword ? 'visibility_off' : 'visibility'"
-                        :type="showPassword ? 'text' : 'userAuth.password'" name="input-10-1" label="Password"
-                        hint="At least 6 characters" counter @click:append="showPassword = !showPassword">
-                    </v-text-field>
-                </v-container>
-
-                <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="blue darken-1" flat type='submit'>Make Account</v-btn>
-                </v-card-actions>
-            </v-form>
-        </v-flex>
-        <!-- Sign In -->
-        <v-flex sm12 md6>
-            <h5>Sign In</h5>
-            <v-form @submit.prevent="signIn">
-                <v-container>
-                    <v-flex>
-                        <v-text-field append-icon="person" v-model.trim='userAuth.email' :counter="50" label="Email"
-                            required>
-                        </v-text-field>
-                    </v-flex>
-
-                    <v-text-field v-model="userAuth.password"
-                        :append-icon="showPassword ? 'visibility_off' : 'visibility'"
-                        :type="showPassword ? 'text' : 'userAuth.password'" name="input-10-1" label="Password"
-                        hint="At least 6 characters" counter @click:append="showPassword = !showPassword">
-                    </v-text-field>
-
-
-                </v-container>
-
-                <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="blue darken-1" flat type='submit'>Log In</v-btn>
-                </v-card-actions>
-            </v-form>
-        </v-flex>
-    </v-layout>
-
 </v-container>
