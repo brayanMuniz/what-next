@@ -19,9 +19,7 @@ export default Vue.extend({
             vueLogo: 'https://dwglogo.com/wp-content/uploads/2017/09/Vue_js_logo.png'
         }
     },
-    created() {
-        // if (this.$store.getters.isUserSignedIn) this.$router.push('/browse')
-    },
+    created() { },
     methods: {
         async makeNewUser() {
             // IF you use async and await some of the problems might go away

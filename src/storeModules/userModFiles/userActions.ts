@@ -3,6 +3,7 @@ import { userState, userAuthentication, userData, newUser } from '../types';
 import firebase from '@/firebaseConfig'
 let auth = firebase.auth;
 let db = firebase.database
+// cntrol k + 0 to collapse all. Cntrl K + J uncollaopse
 export const actions: ActionTree<userState, any> = {
     // **** Making the user
     async createUserWithEmail({ }, payload: userAuthentication) {
@@ -39,6 +40,7 @@ export const actions: ActionTree<userState, any> = {
         let userData = await db.collection('Users').doc(auth.currentUser.uid).get()
         // Todo: if user Data is undefined return null or something 
         commit('userDataLoaded', userData.data());
+        console.log("Get And Set Called")
         return userData.data();
     },
     async logInUserAuth({ }, payload: userAuthentication) {

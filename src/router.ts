@@ -2,6 +2,9 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/homeFiles/Home.vue';
 import userSettings from './views/userSettingsFiles/userSettings.vue'
+import store from './store';
+import firebase from "@/firebaseConfig";
+let auth = firebase.auth;
 Vue.use(Router);
 
 // Todo: make a router for the user
@@ -13,6 +16,17 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
+      beforeEnter: async (to, from, next) => {
+        await auth.onAuthStateChanged(async user => {
+          if (user) {
+            await store.dispatch("getAndSetUserData");
+            next()
+          } else {
+            console.log('Remove user Data? becuase user not signed in')
+            next()
+          }
+        });
+      }
     },
     {
       path: '/login',
