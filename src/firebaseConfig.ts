@@ -14,9 +14,11 @@ let database = firebase.firestore();
 let storage = firebase.storage();
 let auth = firebase.auth()
 let fbFunctions = firebase.functions();
+let firebaseRef = firebase
 export default {
     database,
     storage,
     auth,
-    fbFunctions
+    fbFunctions,
+    firebaseRef
 }
