@@ -8,6 +8,6 @@ export const state: githubState = {
 
 }
 
-export const projectModule: Module<githubState, any> = {
+export const githubModule: Module<githubState, any> = {
     state, getters, mutations, actions
 }
