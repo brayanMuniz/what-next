@@ -10,7 +10,7 @@ export default Vue.extend({
             }
         }
     },
-    // Todo: Configure vuetify  
+    // Todo: Configure vuetify, be able to import a project(repository from github) 
     methods: {
         async makeNewProject() {
             // Todo: in FB funtions if the project has no filters skip the function call

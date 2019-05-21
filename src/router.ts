@@ -4,6 +4,7 @@ import Home from './views/homeFiles/Home.vue';
 import userSettings from './views/userSettingsFiles/userSettings.vue'
 import store from './store';
 import login from './views/loginFiles/login.vue'
+import join from './views/joinFiles/join.vue'
 import newProject from './views/newProject/newProject.vue'
 import firebase from "@/firebaseConfig";
 let auth = firebase.auth;
@@ -44,7 +45,7 @@ export default new Router({
     {
       path: '/join',
       name: 'join',
-      component: Home
+      component: join
     },
     {
       path: '/settings',

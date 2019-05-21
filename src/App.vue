@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import navbar from "./components/navbarFiles/navbar.vue";
+import navbar from "@/components/navbarFiles/navbar";
 import { userData } from "./storeModules/types";
 import firebase from "@/firebaseConfig";
 let auth = firebase.auth;
