@@ -20,26 +20,16 @@ export const getters: GetterTree<userState, any> = {
         }
         return mySimpleUserData
     },
+    getUserGitHubToken(state): string {
+
+        return ''
+    },
     userHasData(state): boolean {
         if (state.userData === undefined) return false
         return true
     },
-    isUserSignedIn: (state): boolean => {
-        if (state.userData === undefined || auth === undefined || auth === null) return false
+    isUserSignedIn: (): boolean => {
+        if (auth === undefined || auth === null) return false
         return true;
     },
-    // getProfileImageLink: (state) => {
-    //     if (Object.keys(state.userData).length == 0 || state.userData.profileImageLink == undefined) {
-    //         return state.defaultUserImage;
-    //     }
-    //     else {
-    //         return state.userData.profileImageLink;
-    //     }
-    // },
-    // getHiddenRoomsIDs: (state) => {
-    //     if (state.hiddenRooms != null || state.hiddenRooms != undefined) {
-    //         return state.hiddenRooms;
-    //     }
-    //     return [];
-    // },
 };

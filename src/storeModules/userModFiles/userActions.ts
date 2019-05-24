@@ -1,11 +1,45 @@
 import { ActionTree } from 'vuex';
 import { userState, userAuthentication, userData, newUser } from '../types';
 import firebase from '@/firebaseConfig'
+import { githubUserData } from '../githubModuleFiles/githubTypes';
 let auth = firebase.auth;
 let db = firebase.database
+let firebaseRef = firebase
+
 // cntrol k + 0 to collapse all. Cntrl K + J uncollaopse
 export const actions: ActionTree<userState, any> = {
     // **** Making the user
+    async oauthWithGitHub({ dispatch }) {
+        let githubProvider = new firebaseRef.firebaseRef.auth.GithubAuthProvider();
+        githubProvider.addScope('public_repo, read:org, read:user, read:packages'); // reads only
+        auth.signInWithPopup(githubProvider)
+
+            .then(async (result: any) => {
+                if (result === null || result === undefined) return 'result is null' // Todo: would need to configure something
+                var token = result.credential.accessToken;
+                await dispatch('addGitHubTokenFB', token)
+                // after this set up vuex with relative data
+            }).catch(error => {
+                console.log(error.code)
+                console.log(error.message)
+            });
+    },
+    async addGitHubTokenFB({ }, newToken) {
+        if (auth.currentUser === null || auth.currentUser === undefined) return Promise.reject('Could not make user in DB. User not authenticated')
+        console.log('Adding Github Token in DB...');
+        return await db.collection('Users').doc(auth.currentUser.uid).update({
+            token: newToken
+        });
+    },
+    async githubSignout() {
+        auth.signOut().then(() => {
+            console.log('Signout successful!')
+            return 'Signout successful!'
+        }, error => {
+            console.log('Signout failed')
+            'Signout failed'
+        })
+    },
     async createUserWithEmail({ }, payload: userAuthentication) {
         console.log('Creating User With email module...');
         return await auth.createUserWithEmailAndPassword(payload.email, payload.password);
@@ -33,7 +67,6 @@ export const actions: ActionTree<userState, any> = {
         return madeUser;
     },
     // Todo: figure out how to test better so you dont have to make a new user every time
-    // **** Updating users data
     // **** Getting user data
     async getAndSetUserData({ commit }) {
         if (auth.currentUser === null || auth.currentUser === undefined) return Promise.reject('User not authorized')

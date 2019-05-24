@@ -19,17 +19,16 @@ export default Vue.extend({
   },
   async created() {
     await auth.onAuthStateChanged(async user => {
-      if (user && !this.$store.getters.userHasData) {
-        await this.$store
-          .dispatch("getAndSetUserData")
-          .then(res => {
-            this.$router.push("/");
-          })
-          .catch(err => {
-            alert("There was a problem getting your data");
-          });
-      } else {
-        this.$router.push("/");
+      if (user) {
+        console.log("TCL: created -> user", user);
+        // await this.$store
+        //   .dispatch("getAndSetUserData")
+        //   .then(res => {
+        //     this.$router.push("/");
+        //   })
+        //   .catch(err => {
+        //     alert("There was a problem getting your data");
+        //   });
       }
     });
   },

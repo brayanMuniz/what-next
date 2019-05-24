@@ -32,9 +32,11 @@ export interface newUser {
 
 export interface userState {
     userData?: userData;
+    token: string;
     error: boolean;
 }
 // **** Proejects Interfaces
+// Have to rewrite these depending on github repo data
 // Users/$user/Projects/$project
 export interface simpleProjectData {
     projectUID: string;

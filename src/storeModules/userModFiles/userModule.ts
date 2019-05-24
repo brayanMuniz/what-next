@@ -6,7 +6,8 @@ import { userState, RootState } from '../types'
 
 export const state: userState = {
     userData: undefined,
-    error: false
+    error: false,
+    token: ''
 };
 
 export const userModule: Module<userState, RootState> = {
