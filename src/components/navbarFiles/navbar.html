@@ -7,15 +7,20 @@
         <!-- Todo: Make this a computed property -->
 
         <v-spacer></v-spacer>
+        <!-- Todo: abstract both of these and add a v-if on each  -->
         <v-toolbar-items class="mr-0" v-if='!$store.getters.isUserSignedIn'>
+            <v-btn to='browse'>Browse</v-btn>
             <!-- <v-btn @click='signInDialog = !signInDialog'>Sign In</v-btn> -->
-            <v-btn to='/join' flat>Sign Up</v-btn>
             <v-btn to='/login' flat>Sign In</v-btn>
+            <v-btn @click='signOutUser'>Sign Out</v-btn>
         </v-toolbar-items>
 
         <v-toolbar-items class="mr-0" v-else>
-            <!-- Todo: make this into a computed  -->
-            <v-btn :to='toUserData' flat>{{getUsername}}</v-btn>
+            <v-btn to='browse'>Browse</v-btn>
+            <!-- Todo: make this a dropdown -->
+            <v-btn>
+                <v-img aspect-ratio="1" :src='getUserProfileURL'></v-img>
+            </v-btn>
         </v-toolbar-items>
     </v-toolbar>
 </nav>

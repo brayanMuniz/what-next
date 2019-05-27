@@ -1,11 +1,14 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+
 import Home from './views/homeFiles/Home.vue';
 import userSettings from './views/userSettingsFiles/userSettings.vue'
-import store from './store';
 import login from './views/loginFiles/login.vue'
 import join from './views/joinFiles/join.vue'
 import newProject from './views/newProject/newProject.vue'
+import browse from './views/browseFiles/browse.vue'
+
+import store from './store';
 import firebase from "@/firebaseConfig";
 let auth = firebase.auth;
 Vue.use(Router);
@@ -56,6 +59,11 @@ export default new Router({
       path: '/newProject',
       name: 'newProject',
       component: newProject
+    },
+    {
+      path: '/browse',
+      name: 'browse',
+      component: browse
     }
   ],
 });

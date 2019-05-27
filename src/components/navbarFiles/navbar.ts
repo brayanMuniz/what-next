@@ -1,5 +1,7 @@
 import Vue from "vue";
 import signInComponent from '../loginFiles/login'
+import firebase from '@/firebaseConfig'
+let auth = firebase.auth
 export default Vue.extend({
     name: 'navbar',
     data() {
@@ -10,12 +12,12 @@ export default Vue.extend({
     },
     methods: {
         async signOutUser() {
-            await this.$store.dispatch('signOutUserAuth')
+            await this.$store.dispatch('githubSignout')
         }
     },
     computed: {
-        getUsername(): String {
-            if (this.$store.getters.isUserSignedIn) return this.$store.getters.getUserData.userName
+        getUserProfileURL() {
+            if (this.$store.getters.isUserSignedIn && auth.currentUser !== null) return auth.currentUser.photoURL
             return ''
         },
         toUserData(): Object {
